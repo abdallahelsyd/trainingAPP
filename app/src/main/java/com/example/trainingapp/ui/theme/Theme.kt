@@ -1,6 +1,5 @@
 package com.example.trainingapp.ui.theme
 
-
 import android.app.Activity
 import android.os.Build
 import androidx.compose.foundation.isSystemInDarkTheme
@@ -22,7 +21,7 @@ private val DarkColorScheme = darkColorScheme(
     secondary = SecondaryDark,
     background = BackgroundDark,
     surface = SurfaceDark,
-    surfaceVariant = PlayingHighlightDark // Used for the playing item
+    surfaceVariant = PlayingHighlightDark
 )
 
 private val LightColorScheme = lightColorScheme(
@@ -31,7 +30,7 @@ private val LightColorScheme = lightColorScheme(
     secondary = SecondaryLight,
     background = BackgroundLight,
     surface = SurfaceLight,
-    surfaceVariant = PlayingHighlight // Used for the playing item
+    surfaceVariant = PlayingHighlight
 )
 
 @Composable
@@ -55,7 +54,9 @@ fun TrainingAppTheme(
         SideEffect {
             val window = (view.context as Activity).window
             window.statusBarColor = colorScheme.primary.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+            // isAppearanceLightStatusBars = true means dark icons (for light background)
+            // isAppearanceLightStatusBars = false means light icons (for dark background)
+            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = !darkTheme
         }
     }
 
