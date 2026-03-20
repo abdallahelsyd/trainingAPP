@@ -49,7 +49,7 @@ class LibraryViewModel @Inject constructor(
 
     fun onVisibleItemsChanged(visibleIds: List<String>){
         val idsToFetch = visibleIds.filter {
-            !_audioInfoMap.value.containsKey(it) && _fetchingIds.value.contains(it)
+            !_audioInfoMap.value.containsKey(it) && !_fetchingIds.value.contains(it)
         }
         if (idsToFetch.isEmpty()) return
         viewModelScope.launch {

@@ -11,13 +11,9 @@ class MockLibraryApi @Inject constructor() {
     suspend fun fetchAudioBooks(): List<AudioBook> {
         delay(1500) // Simulate 1.5 second network latency
 
-        return listOf(
-            AudioBook("1", "Atomic Habits", "James Clear"),
-            AudioBook("2", "Deep Work", "Cal Newport"),
-            AudioBook("3", "The Pragmatic Programmer", "David Thomas"),
-            AudioBook("4", "Clean Code", "Robert C. Martin"),
-            AudioBook("5", "Designing Data-Intensive Applications", "Martin Kleppmann")
-        )
+        return  List(1000) { index ->
+            AudioBook(index.toString(), "Atomic Habits", "James Clear")
+        }
     }
 
     suspend fun fetchAudioInfo(bookId: String): AudioInfo {
